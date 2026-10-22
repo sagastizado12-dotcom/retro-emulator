@@ -31,3 +31,4 @@ body.play{background:#000;overflow:hidden;height:100vh;height:100dvh}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:grid;place-items:center;z-index:50;padding:16px}.modal[hidden]{display:none}
 .modal-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;max-width:520px;width:100%;max-height:90vh;overflow:auto}
 .modal-box h3{margin:0 0 12px;font-size:15px;word-break:break-word}.chooser-btns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.preview{color:#666;text-align:center;margin-top:30%;font-size:13px}

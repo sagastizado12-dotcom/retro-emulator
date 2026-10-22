@@ -1,7 +1,9 @@
 (async () => {
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
   const err = m => { const e = document.getElementById('err'); e.textContent = m; e.hidden = false; };
-  const id = new URLSearchParams(location.search).get('id');
+  const qs = new URLSearchParams(location.search), id = qs.get('id');
+  // Controller preview: play.html?skin=<system id> shows only the touch controller (no game)
+  if (!id && qs.get('skin')) { document.getElementById('game').innerHTML = '<p class="preview">Controller preview</p>'; RetroSkin.mount(qs.get('skin'), { hidden: false, sink: (i, v) => (window.__skinLog = window.__skinLog || []).push([i, v]) }); return; }
   const g = id && await DB.get('games', id).catch(() => null);
   if (!g) return err('Game not found on this device. Go back and pick the file again.');
   const c = CONSOLES.find(c => c.id === g.system);
@@ -24,7 +26,9 @@
   window.EJS_language = 'en-US';
   window.EJS_color = '#7c5cff';
   window.EJS_startOnLoaded = true;
-  window.EJS_defaultOptions = { 'save-state-location': 'browser' };
+  window.EJS_defaultOptions = { 'save-state-location': 'browser', 'virtual-gamepad': 'disabled' };
+  // Per-system controller skin (skins.js) replaces EmulatorJS's generic touch pad on touch screens
+  if (matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0) RetroSkin.mount(c.id);
   if (c.bios) {
     const b = await DB.get('bios', c.id).catch(() => null);
     const files = !b ? [] : b.files ? b.files : [{ name: b.name, blob: b.blob }];

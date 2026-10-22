@@ -1,5 +1,5 @@
 // Service worker: app shell precache + cache-first EmulatorJS cores
-const VERSION = 'v2';
+const VERSION = 'v3';
 const SHELL_CACHE = 'retro-shell-' + VERSION;
 const CORE_CACHE = 'retro-cores-v1'; // cores are versioned by EmulatorJS release (4.2.3)
 const SHELL = [
@@ -8,6 +8,8 @@ const SHELL = [
   'play.html',
   'app.js',
   'play.js',
+  'skins.js',
+  'skins.css',
   'consoles.js',
   'db.js',
   'style.css',
