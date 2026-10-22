@@ -17,14 +17,15 @@
   <h1>🎮 Retro</h1>
   <div class="hdr-actions">
     <span id="net" class="pill"></span>
-    <button id="dlAll" class="btn">⬇ Download all consoles for offline</button>
+    <button id="dlAll" class="btn">⬇ Download all for offline</button>
   </div>
 </header>
 <main>
   <section>
-    <div class="row-title"><h2>Pick a console</h2>
+    <div class="row-title"><h2>Consoles</h2>
       <label class="btn primary">Open ROM (auto-detect)<input type="file" id="anyFile" hidden></label></div>
-    <div id="tiles" class="tiles"></div>
+    <p class="muted"><span id="offlineSummary"></span> · Tap a console to pick a game · Tap ⬇ to save that console for offline.</p>
+    <div id="tiles"></div>
     <p id="dlStatus" class="muted"></p>
   </section>
   <section>
@@ -35,14 +36,17 @@
     <h2>Notes</h2>
     <ul>
       <li><b>Use only games you own.</b> No games or BIOS files are included or linked.</li>
-      <li>PS1: some games need a BIOS (e.g. <code>scph5501.bin</code>) dumped from your own console. Add it on the PlayStation tile. For multi-file games (.bin + .cue), put them in one .zip, or use .chd / .pbp.</li>
+      <li>BIOS: some systems need a BIOS dumped from your own hardware. <b>Required:</b> Sega CD, Atari Lynx, ColecoVision, 3DO. <b>Optional:</b> PS1, DS, Saturn, Atari 7800, PC Engine CD (syscard3.pce), Neo Geo (neogeo.zip). The file name must match exactly (tap the BIOS button to see it).</li>
+      <li>Multi-file disc games (.bin + .cue): put them in one .zip, or use .chd / .pbp. For ambiguous files (.zip, .bin, .iso, .chd, .cue) you'll be asked which console.</li>
+      <li>Arcade: the romset version must match the core (FBNeo or MAME 2003-Plus). DOS: zip the game folder.</li>
       <li>Save states: use the emulator menu (Save/Load State). They're kept in this browser.</li>
-      <li>GameCube: no reliable in-browser emulator exists yet (Dolphin's WebAssembly port is still an early demo), so it's not supported here.</li>
+      <li>GameCube: no reliable in-browser emulator exists yet (Dolphin's WebAssembly port is still an early demo), so it's not supported. PSP, Saturn, 3DO and DOS are experimental.</li>
     </ul>
   </section>
 </main>
+<div id="chooser" class="modal" hidden><div class="modal-box"><h3 id="chooserTitle"></h3><div id="chooserBtns" class="chooser-btns"></div><button id="chooserCancel" class="btn small">Cancel</button></div></div>
 <input type="file" id="sysFile" hidden>
-<input type="file" id="biosFile" hidden>
+<input type="file" id="biosFile" multiple hidden>
 <script src="consoles.js"></script>
 <script src="db.js"></script>
 <script src="app.js"></script>
