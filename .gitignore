@@ -1,0 +1,14 @@
+*.gba
+*.gb
+*.gbc
+*.sfc
+*.smc
+*.n64
+*.z64
+*.v64
+*.iso
+*.chd
+*.pbp
+*.cue
+node_modules/
+screenshot*.png

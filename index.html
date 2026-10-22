@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0d0d14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Retro">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/icon-192.png">
+<title>Retro Emulator</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header>
+  <h1>🎮 Retro</h1>
+  <div class="hdr-actions">
+    <span id="net" class="pill"></span>
+    <button id="dlAll" class="btn">⬇ Download all consoles for offline</button>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="row-title"><h2>Pick a console</h2>
+      <label class="btn primary">Open ROM (auto-detect)<input type="file" id="anyFile" hidden></label></div>
+    <div id="tiles" class="tiles"></div>
+    <p id="dlStatus" class="muted"></p>
+  </section>
+  <section>
+    <h2>Recently played</h2>
+    <div id="recent" class="recent"><p class="muted">Nothing yet. Games you open are saved on this device so they work offline.</p></div>
+  </section>
+  <section class="notes">
+    <h2>Notes</h2>
+    <ul>
+      <li><b>Use only games you own.</b> No games or BIOS files are included or linked.</li>
+      <li>PS1: some games need a BIOS (e.g. <code>scph5501.bin</code>) dumped from your own console. Add it on the PlayStation tile. For multi-file games (.bin + .cue), put them in one .zip, or use .chd / .pbp.</li>
+      <li>Save states: use the emulator menu (Save/Load State). They're kept in this browser.</li>
+      <li>GameCube: no reliable in-browser emulator exists yet (Dolphin's WebAssembly port is still an early demo), so it's not supported here.</li>
+    </ul>
+  </section>
+</main>
+<input type="file" id="sysFile" hidden>
+<input type="file" id="biosFile" hidden>
+<script src="consoles.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+</body></html>
